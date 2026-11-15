@@ -1,0 +1,162 @@
+=====================================================================
+ Git Commands Used in the Assignment
+ Name    : Varun Mundada
+ Roll No : 2024EB02355
+ Repo    : https://github.com/milesmoralis2411/sdp-git-workflow
+=====================================================================
+
+---------------------------------------------------------------------
+STEP 1 : Local Repository Setup
+---------------------------------------------------------------------
+1. ls
+   Lists the files in the project folder (index.html, about.html) to
+   confirm they exist before initialising Git.
+
+2. git init -b main
+   Creates a new, empty Git repository in the current folder and names
+   the default branch "main".
+
+3. git config core.autocrlf false
+   Tells Git (for this repository only) not to convert line endings, so
+   files are stored exactly as written.
+
+4. git config user.name
+   Displays the author name Git will record on every commit.
+
+5. git status
+   Shows the state of the working directory: which files are untracked,
+   modified or staged.
+
+---------------------------------------------------------------------
+STEP 2 : Git Workflow Execution
+---------------------------------------------------------------------
+6. git add index.html about.html
+   Stages the two HTML files so they are included in the next commit.
+
+7. git commit -m "Initial commit: add index.html and about.html"
+   Records the staged files as the first snapshot (initial state) of the
+   project with a descriptive message.
+
+8. git diff
+   Shows line-by-line changes between the working directory and the
+   last commit (used to review edits before staging).
+
+9. git add index.html
+   Stages the modified index.html.
+
+10. git commit -m "Update index.html with course details"
+    Creates the second commit containing the change to index.html.
+
+11. git branch feature
+    Creates a new branch named "feature" pointing at the current commit.
+
+12. git branch
+    Lists all local branches; the current branch is marked with "*".
+
+13. git checkout feature
+    Switches the working directory to the "feature" branch.
+
+14. git add about.html
+    Stages the change made to about.html on the feature branch.
+
+15. git commit -m "Add skills section to about.html (feature branch)"
+    Commits the change to the feature branch only; main is unaffected.
+
+16. git log --oneline
+    Shows the commit history in a compact, one-line-per-commit format.
+
+17. git checkout main
+    Switches back to the main branch.
+
+18. git merge --no-ff feature -m "Merge branch 'feature' into main"
+    Merges the feature branch into main. --no-ff forces a merge commit
+    so the branch activity remains visible in the history.
+
+19. git log
+    Displays the full commit history (hash, author, date, message).
+
+20. git log --oneline --graph --all --decorate
+    Displays the history of all branches as a text graph, showing where
+    the feature branch split off and was merged back.
+
+---------------------------------------------------------------------
+STEP 3 : .gitignore Implementation
+---------------------------------------------------------------------
+21. cat .gitignore
+    Prints the contents of .gitignore (rules: *.log and temp/).
+
+22. git status --ignored
+    Shows the normal status plus the files/folders Git is ignoring,
+    proving app.log, error.log and temp/ are excluded.
+
+23. git add .gitignore
+    Stages the .gitignore file.
+
+24. git commit -m "Add .gitignore to ignore .log files and temp/ folder"
+    Commits the .gitignore so the ignore rules are shared with everyone
+    who clones the repository.
+
+---------------------------------------------------------------------
+STEP 4 : Undo Operation
+---------------------------------------------------------------------
+25. git add contact.html
+    Stages a new file, contact.html, for the extra commit.
+
+26. git commit -m "Add contact.html (commit to be undone)"
+    Makes the additional commit that will be undone.
+
+27. git log --oneline -3
+    Shows the last 3 commits to confirm the extra commit exists.
+
+28. git revert HEAD --no-edit
+    Undoes the last commit by creating a NEW commit that reverses its
+    changes (contact.html is deleted). History is preserved, which makes
+    it safe for repositories that are shared/pushed to GitHub.
+    (--no-edit accepts the default "Revert ..." commit message.)
+
+29. git show --stat HEAD
+    Shows details of the latest commit (the revert) and which files it
+    changed.
+
+   Alternative (not used): git reset --hard HEAD~1
+   Moves the branch pointer back one commit and discards that commit
+   entirely. It rewrites history, so revert was preferred.
+
+---------------------------------------------------------------------
+STEP 5 : GitHub Integration
+---------------------------------------------------------------------
+30. gh auth login
+    Logs the GitHub CLI into the GitHub account so it can create
+    repositories and push code.
+
+31. gh repo create sdp-git-workflow --public
+    Creates a new PUBLIC repository named sdp-git-workflow on GitHub
+    (the repository was NOT created on GitHub before the local work).
+
+32. git remote add origin https://github.com/milesmoralis2411/sdp-git-workflow.git
+    Connects the local repository to the GitHub repository under the
+    short name "origin".
+
+33. git remote -v
+    Lists configured remotes and their fetch/push URLs to verify the
+    connection.
+
+34. git push -u origin main
+    Uploads the main branch (with its complete commit history) to GitHub
+    and sets origin/main as the default upstream branch.
+
+35. git push origin feature
+    Pushes the feature branch as well so the branch is visible on GitHub.
+
+---------------------------------------------------------------------
+STEP 6 : Command Documentation
+---------------------------------------------------------------------
+36. git add git_commands.txt
+    Stages this documentation file.
+
+37. git commit -m "Add git_commands.txt documenting all commands used"
+    Commits the documentation file to the repository.
+
+38. git log --oneline --graph --all --decorate
+    Final view of the complete repository history.
+=====================================================================
